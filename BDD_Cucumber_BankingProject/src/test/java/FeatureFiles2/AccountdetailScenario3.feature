@@ -1,0 +1,25 @@
+Feature: Validate AccountDetails functionality of GrotechMinds Banking Application
+
+  Background: Given User open the URL of Banking application
+
+  @test16
+  Scenario Outline: Validate AccountDetails functionality of GroTechMind Banking Application
+    And user clicks on AccountDetails button in Webpage
+    And user select customer from the dropdown
+    And user clicks on the Login Button
+    And user selects the Account Number
+    And user clicks on the Deposit tab
+    And user enters the amount as "<DepositAmount>"
+    When user submit the deposit Button
+    Then deposited amount is updated in balance field
+    And user clicks on withdrawl tab
+    And user enters amount to be withdrawn as "<WithdrawAmount>"
+    When click on withdraw Button
+    Then deducted balanced amount is updated in balance field
+    And also verify that the Title of the AccountDetails page is shown proper
+
+    Examples: 
+      | DepositAmount | WithdrawAmount |
+      |           5000 |               1000 |
+
+   

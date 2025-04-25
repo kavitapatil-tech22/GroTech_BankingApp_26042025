@@ -1,0 +1,61 @@
+package PageClasses;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import Utilities.BaseClass;
+
+public class ContactsUsPage extends BaseClass
+{
+        WebDriver driver;        
+        public ContactsUsPage(WebDriver driver)       
+        {
+              this.driver = driver;
+              PageFactory.initElements(driver, this);
+        	
+         }
+        
+        @FindBy(xpath="//a[@href='/contact-us']"")
+        WebElement link_forgetPassword;
+        
+        @FindBy(xpath = "//input[@id='input_7539084004150']")
+        WebElement txt_emailId;
+
+        @FindBy(xpath = "//input[@id='input_7539084004151']")
+        WebElement txt_mobileNo;
+        
+        @FindBy(xpath = "//button[@type='submit']")
+        WebElement btn_reset;     
+        
+        @FindBy(xpath="//div[@class='js-successbox t-form__successbox t-text t-text_md']")
+    	WebElement val_forgotPwd_txtMessage;
+
+        public void forgetPasswordLink()
+        {
+        	link_forgetPassword.click();
+        }
+        public void enterEmailId(String email)
+        {
+        	txt_emailId.sendKeys(email);
+        }
+        
+        public void enterMobileNumber(String mobilenum)
+        {
+        	txt_mobileNo.sendKeys(mobilenum);
+        }
+        public void clickOnResetBtn()
+        {
+        	btn_reset.click();	
+        }
+        
+        public String VerifyMessage()
+        {
+        	String msg2 = link_forgetPassword.getText();
+        	
+			return msg2;
+        	
+        }
+		
+}

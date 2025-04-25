@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestRunner" project="BDD_Cucumber_BankingProject" tests="5" started="5" failures="0" errors="1" ignored="0">
+  <testsuite name="StepDefinition3.TestRunner" time="234.073">
+    <testsuite name="Validate AccountDetails functionality of GrotechMinds Banking Application" time="55.812">
+      <testcase name="Validate AccountDetails functionality of GroTechMind Banking Application" classname="Validate AccountDetails functionality of GrotechMinds Banking Application" time="55.812"/>
+    </testsuite>
+    <testsuite name="Validate ContactsUs Functionality of GrotechMinds Banking Application" time="22.974">
+      <testcase name="Validate ContactsUs functionality in GrotechMinds Banking Application" classname="Validate ContactsUs Functionality of GrotechMinds Banking Application" time="22.974"/>
+    </testsuite>
+    <testsuite name="Validate Forgot password Functionality of GrotechMinds Banking Application" time="36.009">
+      <testcase name="Validate Forgot password functionality in GrotechMinds Banking Application" classname="Validate Forgot password Functionality of GrotechMinds Banking Application" time="36.009">
+        <error>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for text ('Thank you!') to be present in element found by By.cssSelector: div.js-successbox.t-form__successbox (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.115, chrome: {chromedriverVersion: 135.0.7049.114 (63fd8a7d9d0..., userDataDir: C:\Users\saanv\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58294}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58294/devtoo..., se:cdpVersion: 135.0.7049.115, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: f4c816c8155b91687659d53bf5200a41&#13;
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)&#13;
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)&#13;
+	at PageClasses.ForgetPasswordPage.val_expectedConditionWaitForResetButton(ForgetPasswordPage.java:74)&#13;
+	at StepDefinition3.StepDefinition2.validate_that_user_able_to_reset_forgot_password_succesfully(StepDefinition2.java:184)&#13;
+	at ✽.validate that user able to reset forgot password succesfully(file:///C:/Users/saanv/eclipse-workspace/Kavita_GroTechMindsBankingProject/BDD_Cucumber_BankingProject/src/test/java/FeatureFiles2/ForgotPassword.feature:8)&#13;
+&#13;
+</error>
+      </testcase>
+    </testsuite>
+    <testsuite name="Validate Login Functionality of GrotechMinds Banking Application" time="25.744">
+      <testcase name="Validate Login functionality in GrotechMinds Banking Application" classname="Validate Login Functionality of GrotechMinds Banking Application" time="25.744"/>
+    </testsuite>
+    <testsuite name="Validate SignUp Functionality of GrotechMinds Banking Application" time="93.524">
+      <testcase name="Validate signup functionality in GrotechMinds Banking Application" classname="Validate SignUp Functionality of GrotechMinds Banking Application" time="93.524"/>
+    </testsuite>
+  </testsuite>
+</testrun>

@@ -1,0 +1,12 @@
+Feature: Validate Account Detail Functionality of GrotechMinds Banking Application
+@test15
+  Scenario Outline: Validate Account Detail functionality in GrotechMinds Banking Application
+    Given user open the url for banking application
+    And user clicks on Account Detail Button in Webpage
+    And user switch to new window 
+    And user clicks on the dropdown Your Name
+    And user selects the Your Name
+    When user clicks on the Login button
+    And also verify that the Title of the banking page shown proper
+    And user selects the Account Number
+   

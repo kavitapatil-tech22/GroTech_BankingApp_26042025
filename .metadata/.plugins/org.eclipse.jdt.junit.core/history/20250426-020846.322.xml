@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestRunner" project="BDD_Cucumber_BankingProject" tests="5" started="5" failures="0" errors="1" ignored="0">
+  <testsuite name="StepDefinition3.TestRunner" time="272.236">
+    <testsuite name="Validate AccountDetails functionality of GrotechMinds Banking Application" time="56.836">
+      <testcase name="Validate AccountDetails functionality of GroTechMind Banking Application" classname="Validate AccountDetails functionality of GrotechMinds Banking Application" time="56.836"/>
+    </testsuite>
+    <testsuite name="Validate ContactsUs Functionality of GrotechMinds Banking Application" time="22.897">
+      <testcase name="Validate ContactsUs functionality in GrotechMinds Banking Application" classname="Validate ContactsUs Functionality of GrotechMinds Banking Application" time="22.897"/>
+    </testsuite>
+    <testsuite name="Validate Forgot password Functionality of GrotechMinds Banking Application" time="34.562">
+      <testcase name="Validate Forgot password functionality in GrotechMinds Banking Application" classname="Validate Forgot password Functionality of GrotechMinds Banking Application" time="34.562"/>
+    </testsuite>
+    <testsuite name="Validate Login Functionality of GrotechMinds Banking Application" time="40.113">
+      <testcase name="Validate Login functionality in GrotechMinds Banking Application" classname="Validate Login Functionality of GrotechMinds Banking Application" time="40.113"/>
+    </testsuite>
+    <testsuite name="Validate SignUp Functionality of GrotechMinds Banking Application" time="117.81">
+      <testcase name="Validate signup functionality in GrotechMinds Banking Application" classname="Validate SignUp Functionality of GrotechMinds Banking Application" time="117.809">
+        <error>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for text ('Thank you!') to be present in element found by By.cssSelector: div.js-successbox.t-form__successbox (tried for 50 second(s) with 500 milliseconds interval)
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.115, chrome: {chromedriverVersion: 135.0.7049.114 (63fd8a7d9d0..., userDataDir: C:\Users\saanv\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59016}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59016/devtoo..., se:cdpVersion: 135.0.7049.115, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 504c6e09d7d0d7bbe3bd47d2c47c70d7&#13;
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)&#13;
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)&#13;
+	at PageClasses.SignUpPage.val_expectedConditionWaitForSignUpButton(SignUpPage.java:122)&#13;
+	at StepDefinition3.StepDefinition2.validate_that_user_is_getting_proper_response_from_site(StepDefinition2.java:118)&#13;
+	at ✽.validate that user is getting proper response from site(file:///C:/Users/saanv/eclipse-workspace/Kavita_GroTechMindsBankingProject/BDD_Cucumber_BankingProject/src/test/java/FeatureFiles2/SignUpScenarioNew.feature:15)&#13;
+&#13;
+</error>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testrun>

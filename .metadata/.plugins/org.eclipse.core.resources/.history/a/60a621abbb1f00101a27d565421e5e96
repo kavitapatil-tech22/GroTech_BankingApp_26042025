@@ -1,0 +1,66 @@
+package PageClasses;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class LoginPage {
+	WebDriver driver;
+	public LoginPage(WebDriver driver)
+	{
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	@FindBy(xpath="//a[@href='/login']")
+	WebElement btn_loginLink;
+	
+	//@FindBy(xpath="//input[@id='input_1495646567135']")
+	@FindBy(xpath="(//input[@class='t-input js-tilda-rule t-input_pvis'])[1]")
+	WebElement userName;
+	
+	@FindBy(xpath="//input[@id='input_1742715919526']")
+	WebElement password;
+	
+	@FindBy(xpath="//button[@type='submit']")
+	WebElement btn_submitLogin;
+	
+	//@FindBy(xpath="//div[@class='js-successbox t-form__successbox t-text t-text_md']")
+	@FindBy(xpath="//div[text()='Thank you! Your data has been submitted.']")
+	WebElement val_textMessage;
+	
+	//@FindBy(xpath="//title[text()='Log In']")
+	//WebElement val_titleofPage;
+	
+	
+	public void clickOnLogin()
+	{
+		btn_loginLink.click();
+	}
+	
+	public void enterUserName(String userid) {
+		userName.sendKeys(userid);
+	}
+	public void enterPassword(String Password) {
+		password.sendKeys(Password);
+	}	
+	public void clickonSubmit()
+	{
+		btn_submitLogin.submit();
+	}	
+	public String validate_txtMessage() {
+		String txt_Message=val_textMessage.getText();
+		return txt_Message;
+	}
+	
+	public String validateTitleOfThePage()
+	{
+		//String message=val_titleofPage.getText();
+		String title =driver.getTitle();
+		return title;
+	}
+
+	
+
+}

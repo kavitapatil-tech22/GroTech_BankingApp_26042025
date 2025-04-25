@@ -1,0 +1,26 @@
+Feature: Validate Account Detail Functionality of GrotechMinds Banking Application
+@test15
+  Scenario Outline: Validate Account Detail functionality in GrotechMinds Banking Application
+    Given user open the url for banking application
+    And user clicks on Account Detail Button in Webpage
+    And user switch to new window 
+    And user clicks on the dropdown Your Name
+    And user selects the Your Name
+    When user clicks on the Login button
+    Then validate that user able to view banking page succesfully
+    And also verify that the Title of the banking page shown proper
+   # And user selects the Account Number
+    # When user clicks on the deposit tab
+    # And user enters the deposit amount as "<DepositAmount>"
+    #  When user clicks on the Deposit button
+    # Then validate the user able to seee updated deposited amount in balance field
+    # When user clicks on the Withdrawl tab
+    # And user enters the withdraw amount as "<WithdrawAmount>"
+    #  When user clicks on the Withdrawl button
+    #  Then validate the user able to view updated deducted balanced amount in balance field
+    #  And user clicks on the Reset button
+    #Then validate the user able to navigate back to page successfully
+    # And also verify that title of the bank page shown proper
+    Examples: 
+      | DepositAmount | WithdrawAmount |
+      |          5000 |           1000 |

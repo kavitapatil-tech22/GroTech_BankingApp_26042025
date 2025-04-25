@@ -1,0 +1,12 @@
+Feature: Validate Login Functionality of GrotechMinds Banking Application
+
+  Scenario Outline: Validate Login functionality in GrotechMinds Banking Application
+    Given user open the url for banking application
+    And user clicks on Login Button in Webpage
+    And user enters the Useranem as "<uid>"
+    And user enters the Password as "<password>"
+    When user clicks on Submit button
+
+    Examples: 
+      | uid    | password  |
+      | Kavita | Test@1234 |
