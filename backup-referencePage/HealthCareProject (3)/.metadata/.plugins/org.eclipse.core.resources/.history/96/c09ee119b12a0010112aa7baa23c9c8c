@@ -1,0 +1,6 @@
+browser=chrome
+#browser=firefox
+#browser=edge
+#URL=https://o3.openmrs.org/openmrs/spa/home?lang=en
+#URL=https://demo.ozone-his.com/openmrs/spa/home/
+URL=https://dev3.openmrs.org/openmrs/spa/login

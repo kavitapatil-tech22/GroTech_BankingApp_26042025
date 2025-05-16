@@ -1,0 +1,43 @@
+package pageClasses;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
+import org.openqa.selenium.By;
+
+public class PatientEndVisitPage {
+	
+	/* click patient name  */
+	public static By clickPatName()
+	{		
+		
+		//return By.xpath("//a[text()='Dorothy Odinga']");
+		return By.xpath("//a[text()='Richard Jones']");
+		Richard Jones
+	}
+
+	/*  click on location */
+	public static By clickOnActions()
+	{		
+		
+		//return By.xpath("//div[@class='cds--overflow-menu MRCrdpdlhDbDw6ITxMXAfw==']");
+		return By.xpath("//button[@id='custom-actions-overflow-menu-trigger' and @aria-expanded='false']");
+	}
+
+	
+	/* select option location */
+	public static void selectOptionActions() throws AWTException {
+		 /* Use Robot to navigate and select */
+       Robot robot = new Robot();
+
+       /* Press Down Arrow 1 times to reach desired option */
+       robot.keyPress(KeyEvent.VK_DOWN);
+       robot.keyRelease(KeyEvent.VK_DOWN);
+      /* Press Enter to select */
+       robot.keyPress(KeyEvent.VK_ENTER);
+       robot.keyRelease(KeyEvent.VK_ENTER);
+	}
+
+	
+}

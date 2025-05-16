@@ -1,0 +1,137 @@
+package pageClasses;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class RecordPatientConditionsPage {
+	//RecordPatientConditionsPage obj_RecordPatCondition=new RecordPatientConditionsPage();
+	/* click patient name  */
+	public static By clickPatName()
+	{		
+		//return By.xpath("//a[@href='/openmrs/spa/patient/b242575a-0bd2-4a50-a928-247d61b116df/chart']");		
+		//return By.xpath("(//table//tr[td/a[text()='Aayansh2 patil2']])[2]");		
+	/*	//a[contains(@class, 'appointments-table__link') and contains(@href, '/chart')] */		
+		//return By.xpath("(//a[text()='Aayansh patil'])[2]");
+		
+		return By.xpath("//a[text()='Dorothy Odinga']"); //brandan mark
+	}
+	/* click patient name  */
+	public static By clickOnConditions()
+	{
+		//return By.xpath("(//span[@class='-esm-patient-chart__dashboard-extension__menu___FzZxG'])[8]");	
+		return By.xpath("//span[text()='Conditions']");
+		
+	}	/* click patient name  */
+	public static By clickOnRecordConditionLink()
+	{
+		//return By.xpath("//button[@class='cds--btn cds--btn--sm cds--layout--size-sm cds--btn--ghost']");	
+		//return By.xpath("(//button[@class='cds--btn cds--btn--sm cds--layout--size-sm cds--btn--ghost'])[1]");	
+		
+		// click on Add button
+		return By.xpath("(//button[@class='cds--btn cds--btn--ghost' and text()='Add'])[3]");
+	}
+	
+	
+	public static By clickONSearchCondition() {
+		
+		return By.xpath("//input[@class='cds--search-input']");
+	}
+	
+	/*  click on calendar for Date Time */
+	public static By clickOnCalendar() {
+		//return By.xpath("//button[contains(@aria-label, 'Calendar')]");		
+		//return By.xpath("//*[local-name()='button' and @id='react-aria2724544189-:r94:']");		
+		return By.xpath("(//button[contains(@aria-label, 'Calendar')])");						
+	}
+	/* click on day  */
+	public static By clickOnDay() {
+		return (By.xpath("//span[@data-type='day']"));
+	}
+	/* click on Month  */
+	public static By clickOnMonth() {
+		return (By.xpath("//span[@data-type='month']"));
+	}
+	/* click on year  */
+	public static By clickOnYear() {
+		return (By.xpath("//span[@data-type='year']"));
+	}
+	
+	/* Select Clicnical S)tatus */
+	
+	public static By selectClinicalStatus() {
+		
+		return By.xpath("(//span[@class='cds--radio-button__appearance'])[1]");	
+	}
+	public static By clickOnSaveAndClose() {
+		//return By.xpath("//button[@type='submit']");
+		
+		return By.xpath("//button[@class='-esm-patient-conditions__conditions-form__button___lMJtM cds--btn cds--btn--primary']");
+		
+		
+	}
+	
+	//private static By tableRows = By.xpath("//section[contains(@class,'tableContainer')]//tbody/tr");
+	private static By tableRows = By.xpath("//section[contains(@class,'cds--data-table-container')]//thead/tr");
+			
+	private static By tableRows1 =By.xpath("//table[@aria-label='conditions summary']");
+
+	public static int getConditionRowCount(WebDriver driver) {
+		
+		// Wait for table to load
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement table = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table[@aria-label='vitals']")));
+		
+	        return driver.findElements(tableRows).size();
+	    }
+	 
+
+	 public static boolean isConditionDisplayed(String condition, String date, String status,WebDriver driver) {
+//		   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+//	        wait.until(d -> RecordPatientConditionsPage.getConditionRowCount(driver) > initialRowCount);
+	        
+//	        // Wait for table to load
+//	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+//	        WebElement table1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table[@class='cds--data-table -esm-patient-conditions__conditions-overview__table___NrTqj cds--data-table--sm cds--data-table--sort cds--data-table--zebra']")));
+
+	        
+	        List<WebElement> rows = driver.findElements(tableRows);
+	        for (WebElement row : rows) {
+	            List<WebElement> cells = row.findElements(By.tagName("td"));
+	            if (cells.size() >= 3) {
+	                String tableCondition = cells.get(0).getText().trim();
+	                String tableDate = cells.get(1).getText().trim();
+	                String tableStatus = cells.get(2).getText().trim();
+
+	                if (tableCondition.equalsIgnoreCase(condition) &&
+	                    tableDate.equalsIgnoreCase(date) &&
+	                    tableStatus.equalsIgnoreCase(status)) {
+	                    return true;
+	                }
+	            }
+	        }
+	        return false;
+	    }
+	 
+	 public static String getLatestConditionValue(WebDriver driver) {
+		    List<WebElement> rows = driver.findElements(tableRows);
+		    return rows.get(rows.size() - 1).findElements(By.tagName("td")).get(0).getText().trim();
+		}
+
+		public static String getLatestDateValue(WebDriver driver) {
+		    List<WebElement> rows = driver.findElements(tableRows);
+		    return rows.get(rows.size() - 1).findElements(By.tagName("td")).get(1).getText().trim();
+		}
+
+		public static String getLatestStatusValue(WebDriver driver) {
+		    List<WebElement> rows = driver.findElements(tableRows);
+		    return rows.get(rows.size() - 1).findElements(By.tagName("td")).get(2).getText().trim();
+		}
+	 
+}

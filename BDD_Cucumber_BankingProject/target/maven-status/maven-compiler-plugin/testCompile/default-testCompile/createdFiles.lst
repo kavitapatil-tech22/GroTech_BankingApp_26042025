@@ -1,7 +1,7 @@
-StepDefinition3\TestRunner.class
-Utilities\FetchDataFromProperty.class
 PageClasses\SignUpPage.class
 Utilities\FetchDataFromExcel.class
-Utilities\BaseClass.class
 PageClasses\LoginPage.class
 StepDefinition3\StepDefinition2.class
+StepDefinition3\TestRunner.class
+Utilities\FetchDataFromProperty.class
+Utilities\BaseClass.class

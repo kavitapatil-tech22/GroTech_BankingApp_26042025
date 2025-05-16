@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: StepDefinition3.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 26.141 s - in StepDefinition3.TestRunner
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 300.801 s - in StepDefinition3.TestRunner

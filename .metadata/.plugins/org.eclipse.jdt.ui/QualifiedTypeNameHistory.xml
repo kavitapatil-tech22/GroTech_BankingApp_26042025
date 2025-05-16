@@ -7,12 +7,12 @@
     <fullyQualifiedTypeName name="org.openqa.selenium.WebElement"/>
     <fullyQualifiedTypeName name="org.openqa.selenium.By.ByTagName"/>
     <fullyQualifiedTypeName name="PageClasses.ForgetPasswordPage"/>
-    <fullyQualifiedTypeName name="PageClasses.AccountDetailsPage"/>
     <fullyQualifiedTypeName name="org.openqa.selenium.support.ui.WebDriverWait"/>
     <fullyQualifiedTypeName name="org.openqa.selenium.support.ui.ExpectedConditions"/>
-    <fullyQualifiedTypeName name="org.openqa.selenium.support.ui.Select"/>
     <fullyQualifiedTypeName name="PageClasses.ContactsUsPage"/>
-    <fullyQualifiedTypeName name="java.util.Set"/>
     <fullyQualifiedTypeName name="org.openqa.selenium.By.ByClassName"/>
     <fullyQualifiedTypeName name="org.openqa.selenium.JavascriptExecutor"/>
+    <fullyQualifiedTypeName name="PageClasses.AccountDetailsPage"/>
+    <fullyQualifiedTypeName name="java.util.Set"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.support.ui.Select"/>
 </qualifiedTypeNameHistroy>

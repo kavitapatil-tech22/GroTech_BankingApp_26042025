@@ -1,0 +1,53 @@
+package pageClasses;
+
+import org.openqa.selenium.By;
+
+public class AppointmentPage {
+	
+	/* click on Appointment link */
+	public static By ClickOnLinkAppointment() {
+		
+		return By.xpath("//a[@href='/openmrs/spa/home/appointments']");
+		
+	}
+	/* click on Create new Appointment button */
+	public static By ClickOnCreateNewAppointment() {
+		
+		return By.xpath("//button[text()='Create new appointment']");
+		
+	}
+	/* find the search box */
+	public static By ClickOnSearchBox() {
+		return By.xpath("//input[@data-testid='patientSearchBar']");
+	}
+	/* Click on Start Visit button */
+	public static By ClickOnStartVisitButton() {
+		return By.xpath("(//div[@data-extension-id='start-visit-button-patient-search'])[1]");
+	}
+	/* click on New */
+	
+	public static By ClickOnNew() {
+		return By.xpath("(//button[@type='button' and @aria-selected='true'])[2]");
+	}
+	
+	/* click on visit location */
+	/*public static By ClickOnVisitLocation() {
+		return By.xpath("//input[@id='location']");
+	}*/
+	
+	/* click on visit Type */
+	public static By SelectVisitType() {
+		
+		return By.xpath("(//span[@class='cds--radio-button__appearance'])[2]");
+	}
+	
+	/* select punctuality */
+	public static By selectPunctuality() {
+		
+		
+		//return By.xpath("//select[@id='select-:r4u:']");
+		
+		return By.xpath("//*[local-name()='svg' and contains(@class, 'cds--select__arrow')])[3]");
+	}
+
+}

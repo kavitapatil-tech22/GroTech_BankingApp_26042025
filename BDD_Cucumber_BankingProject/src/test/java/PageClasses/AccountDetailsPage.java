@@ -55,7 +55,17 @@ public class AccountDetailsPage {
 	
 	@FindBy(xpath="(//button[@class='_NpZMS wixui-button PlZyDq'])[3]")
 	WebElement clickOnBtn_Withdraw;
-			
+		
+	@FindBy(xpath = "//div[@class='RJZaGO']")
+	WebElement dropdownContainer;
+
+	@FindBy(xpath = "//div[text()='Rahul']")
+	WebElement optionRahul;
+
+	public void enterYourName() {
+	    dropdownContainer.click();
+	    optionRahul.click();
+	}
 	
 	public void click_on_Link_AccountDetails()
 	{
@@ -63,20 +73,20 @@ public class AccountDetailsPage {
 	}
 	
 	
-	public void enterYouName() throws AWTException 
-	{
-
-		Robot sw = new Robot();
-		sw.keyPress(KeyEvent.VK_DOWN);
-		sw.keyPress(KeyEvent.VK_ENTER);
-		 sw.delay(100);
-		 select_YourName.click();
-		 sw.delay(100);
-		sw.keyPress(KeyEvent.VK_DOWN);
-		sw.keyPress(KeyEvent.VK_DOWN);
-		sw.keyPress(KeyEvent.VK_ENTER);
-		
-	}
+//	public void enterYouName() throws AWTException 
+//	{
+//
+//		Robot sw = new Robot();
+//		sw.keyPress(KeyEvent.VK_DOWN);
+//		sw.keyPress(KeyEvent.VK_ENTER);
+//		 sw.delay(100);
+//		 select_YourName.click();
+//		 sw.delay(100);
+//		sw.keyPress(KeyEvent.VK_DOWN);
+//		sw.keyPress(KeyEvent.VK_DOWN);
+//		sw.keyPress(KeyEvent.VK_ENTER);
+//		
+//	}
 	
 	public void submit_Login()
 	{

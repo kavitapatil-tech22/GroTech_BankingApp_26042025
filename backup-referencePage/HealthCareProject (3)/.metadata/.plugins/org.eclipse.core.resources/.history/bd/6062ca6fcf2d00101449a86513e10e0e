@@ -1,0 +1,133 @@
+package testClasses;
+import java.util.Map;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import pageClasses.RecordPatientVitalsPage;
+import utilities.BaseClass;
+import utilities.ListenerImplementation;
+
+@Listeners(ListenerImplementation.class)
+public class RecordPatientVitalsTest extends BaseClass
+{
+	@Test(priority = 3, groups = {"sanity"},retryAnalyzer = utilities.RetryAnalyzer.class)
+	public static void addPatientVitals() throws InterruptedException
+	{
+		LoginTest.executeLoginTest();
+		Thread.sleep(10000);
+		scrollToBottom(driver);
+		scrollToTop(driver);
+		//Thread.sleep(1000);
+		scrollToTableHeader(driver);
+		scrollToTableHeader(driver);
+		Thread.sleep(5000);
+		// Step 1: Expand row first
+		//RecordPatientVitalsPage.expandPatientRowIfCollapsed(driver, "Aravind Anoor");
+
+		// Step 2: Wait and click the name
+		By patientLink = RecordPatientVitalsPage.clickPatName1("Archana Arun");
+		//addExplicitWait3(patientLink);
+		addExplicitWait_elementclickable(patientLink);
+		driver.findElement(patientLink).click();
+		
+		
+		// Step 2: Click the patient name
+		/* element to elementToBeClickable */
+//		addExplicitWait3(RecordPatientVitalsPage.clickPatName(driver));
+//		driver.findElement(RecordPatientVitalsPage.clickPatName(driver)).click();
+
+		/*  elementToBeClickable */
+		addExplicitWait_elementclickable(RecordPatientVitalsPage.recordVitals());
+		driver.findElement(RecordPatientVitalsPage.recordVitals()).click();
+		
+		/* visibilityOfElementLocated */
+		addExplicitWait(RecordPatientVitalsPage.enterTemprature());
+		By temp=RecordPatientVitalsPage.enterTemprature();
+		driver.findElement(temp).sendKeys("36");
+		
+		String actual_tempvalue = driver.findElement(temp).getAttribute("value");
+		System.out.println("Temperature entered value: " + actual_tempvalue);
+		
+		addExplicitWait(RecordPatientVitalsPage.enterSystolic());
+		By systolic=RecordPatientVitalsPage.enterSystolic();
+		driver.findElement(systolic).sendKeys("120");
+		
+		String actual_systolicvalue = driver.findElement(systolic).getAttribute("value");
+		System.out.println("Sysytolic entered value: " + actual_systolicvalue);
+		
+		addExplicitWait(RecordPatientVitalsPage.enterDiastolic());
+		By daistolic=RecordPatientVitalsPage.enterDiastolic();
+		driver.findElement(daistolic).sendKeys("80");
+		
+		String actual_daistolicvalue = driver.findElement(daistolic).getAttribute("value");
+		System.out.println("Daistolic entered value: " + actual_daistolicvalue);
+		
+		addExplicitWait(RecordPatientVitalsPage.enterHeartRate());
+		By heartRate=RecordPatientVitalsPage.enterHeartRate();
+		driver.findElement(heartRate).sendKeys("72");
+		
+		String actual_heartRatevalue = driver.findElement(heartRate).getAttribute("value");
+		System.out.println("Heart Rate/Pulse) entered value: " + actual_heartRatevalue);
+		
+		addExplicitWait(RecordPatientVitalsPage.enterRespirationRate());
+		By rRate=RecordPatientVitalsPage.enterRespirationRate();
+		driver.findElement(rRate).sendKeys("15");
+		
+		String actual_rRateValue = driver.findElement(rRate).getAttribute("value");
+		System.out.println("Respiration Rate entered value: " + actual_rRateValue);
+		
+		addExplicitWait(RecordPatientVitalsPage.enterOxygenSaturation());
+		By SpO2=RecordPatientVitalsPage.enterOxygenSaturation();
+		driver.findElement(SpO2).sendKeys("100");
+		
+		String actual_SpO2Value = driver.findElement(SpO2).getAttribute("value");
+		System.out.println("SpO2% entered value: " + actual_SpO2Value);
+		scrollDownDivTag();
+		
+		addExplicitWait(RecordPatientVitalsPage.enterNotes());
+		driver.findElement(RecordPatientVitalsPage.enterNotes()).sendKeys("Record vital details for Archana Arun");
+		
+		addExplicitWait(RecordPatientVitalsPage.enterWeight());
+		driver.findElement(RecordPatientVitalsPage.enterWeight()).sendKeys("55");
+				
+		addExplicitWait(RecordPatientVitalsPage.enterHeight());
+		driver.findElement(RecordPatientVitalsPage.enterHeight()).sendKeys("165");
+		
+		/* scroll to div tag */
+		scrollDownDivTag();
+		
+		addExplicitWait(RecordPatientVitalsPage.enterMUAC());
+		driver.findElement(RecordPatientVitalsPage.enterMUAC()).sendKeys("0.2");
+		
+		/* scroll to div tag */
+		scrollDownDivTag();
+		
+		/* click on Submit */
+		/*visibilityOfElementLocated*/
+		addExplicitWait(RecordPatientVitalsPage.submitDetails());
+		//driver.findElement(RecordPatientVitalsPage.submitDetails()).click();
+		
+		/* scroll to top */
+		scrollToTop(driver);
+	
+		Map<String, String> vitals = RecordPatientVitalsPage.getVitalsFromLastRow(driver);
+		System.out.println("DateTime: " + vitals.get("DateTime"));
+		System.out.println("Temperature: " + vitals.get("Temperature"));
+		System.out.println("BP: " + vitals.get("BP"));
+		System.out.println("DateTime: " + vitals.get("Pulse"));
+		System.out.println("Temperature: " + vitals.get("RespirationRate"));
+		System.out.println("BP: " + vitals.get("SpO2"));
+      
+		//Assert.assertEquals(vitals.get("DateTime"), actual_tempvalue, "DateTime does not match");
+		Assert.assertEquals(vitals.get("Temperature"), actual_tempvalue, "Temperature does not match");
+        Assert.assertEquals(vitals.get("BP").replaceAll("\\s+", ""), (actual_systolicvalue+"/"+actual_daistolicvalue).replaceAll("\\s+", ""), "BP does not match");
+        Assert.assertEquals(vitals.get("Pulse"), actual_heartRatevalue , "pulse does not match");
+        Assert.assertEquals(vitals.get("RespirationRate"), actual_rRateValue , "RespirationRate does not match");
+        Assert.assertEquals(vitals.get("SpO2"), actual_SpO2Value ,"SpO2 does not match");
+     
+        System.out.println("Test Passed: Entered Patient vital details are correctly displayed in the Vital table.");
+	}
+
+}

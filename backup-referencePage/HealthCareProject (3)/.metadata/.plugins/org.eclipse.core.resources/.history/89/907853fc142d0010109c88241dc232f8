@@ -1,0 +1,282 @@
+package pageClasses;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import utilities.BaseClass;
+
+public class CreateNewAppointmentPage extends BaseClass
+{
+
+	/* fetching the patient ID from the table */
+	public static WebElement getPatientIDFromTable1() {
+		
+//	   By table_patientLink=By.xpath("//table//tr[td/a[text()='Kavita patil']]");
+//	   By table_patientID = By.xpath("//table//tr[td/a[text()='Kavita patil']]/td[3]");
+		
+//		 By table_patientLink=By.xpath("//table//tr[td/a[text()='Aayansh3 patil3']]");
+//		 By table_patientID = By.xpath("//table//tr[td/a[text()='Aayansh3 patil3']]/td[3]");
+	 
+		WebElement table_patientLink=(WebElement) By.xpath("//table//tr[td/a[text()='Aayansh3 patil3']]");
+		WebElement table_patientID = (WebElement) By.xpath("//table//tr[td/a[text()='Aayansh3 patil3']]/td[3]");
+	   System.out.println("Extracted Patient name: " + table_patientLink);
+	   System.out.println("Extracted Patient ID: " + table_patientID);
+	   
+	   return table_patientID;
+	
+	}
+	
+	public static String getPatientIDFromTable(WebDriver driver) {
+		
+	    // Find the cell with the patient ID
+	    WebElement patientIDCell = driver.findElement(By.xpath("//table//tr[td/a[text()='Aayansh2 patil2']]/td[3]"));
+	    String patientID = patientIDCell.getText().trim(); // ✅ Correct
+	    
+	    System.out.println("Extracted Patient ID: " + patientID);
+
+	    
+	    return patientID;
+	}
+	
+
+	/* fetching the patient ID form while creating */
+	//@SuppressWarnings("static-access")
+	public static By form_getPatientID() {
+				
+		  // By form_patientName=By.xpath("//span[@class='_3QvC113UMQvMOBhW+z79+Q==']");
+		   By form_patientID =By.xpath("//span[@class='_7O7gKi8oSk8dU4N7z9kfrQ==']");
+		   
+		  // System.out.println("Extracted Patient name: " + form_patientName);
+		 //  System.out.println("Extracted Patient ID: " + form_patientID);
+
+		   return form_patientID;
+	
+	}
+	public static WebElement getPatientName() {
+		
+		WebElement form_patientName=(WebElement) By.xpath("//span[@class='_3QvC113UMQvMOBhW+z79+Q==']");
+		   System.out.println("Extracted Patient name: " + form_patientName);
+		   
+		   return form_patientName;
+	
+	}
+	
+	
+	public static By clickOnHome() {
+		return By.xpath("(//a[@href='/openmrs/spa/home'])[2]");
+	}
+	
+	/* click on Appointment link */
+	public static By ClickOnLinkAppointment() {
+		
+		return By.xpath("//a[@href='/openmrs/spa/home/appointments']");
+		
+	}
+	/* click on Create new Appointment button */
+	public static By ClickOnCreateNewAppointment() {
+		
+		return By.xpath("//button[text()='Create new appointment']");
+		
+	}
+	/* find the search box */
+	public static By ClickOnSearchBox() {
+		return By.xpath("//input[@data-testid='patientSearchBar']");
+	}
+	
+	/* click on Action Visit button */
+	public static By ClickOnLinkActiveVisit() {
+		
+		return By.xpath("//span[@title='Active Visit']");
+		
+	}
+	/*  click on location */
+	public static By clickOnLocation() {
+		
+		return By.xpath("//select[@id='location']");
+	}
+	/* select option location */
+	public static void slectOptionLocation() throws AWTException {
+		 /* Use Robot to navigate and select */
+       Robot robot = new Robot();
+
+       /* Press Down Arrow 1 times to reach desired option */
+       robot.keyPress(KeyEvent.VK_DOWN);
+       robot.keyRelease(KeyEvent.VK_DOWN);
+      /* Press Enter to select */
+       robot.keyPress(KeyEvent.VK_ENTER);
+       robot.keyRelease(KeyEvent.VK_ENTER);
+	}
+	
+	/*  click on Services*/
+	public static By clickOnService() {
+		return By.xpath("//select[@id='service']");
+	}
+	/* select option location */
+	public static void slectOptionService() throws AWTException, InterruptedException {
+		 /* Use Robot to navigate and select */
+       Robot robot = new Robot();
+
+       for (int i = 0; i < 2; i++) {
+    	    robot.keyPress(KeyEvent.VK_DOWN);
+    	    robot.keyRelease(KeyEvent.VK_DOWN);
+    	    Thread.sleep(100); // optional: slight delay for reliability
+    	}
+       
+      /* Press Enter to select */
+       robot.keyPress(KeyEvent.VK_ENTER);
+       robot.keyRelease(KeyEvent.VK_ENTER);
+	}
+	
+	/*  click on Services*/
+	public static By clickOnAppointmentType() {
+		return By.xpath("//select[@id='appointmentType']");
+	}
+	/* select option location */
+	public static void slectOptionAppointmentType() throws AWTException, InterruptedException {
+		 /* Use Robot to navigate and select */
+       Robot robot = new Robot();
+
+       for (int i = 0; i < 1; i++) {
+    	    robot.keyPress(KeyEvent.VK_DOWN);
+    	    robot.keyRelease(KeyEvent.VK_DOWN);
+    	    Thread.sleep(100); // optional: slight delay for reliability
+    	}
+       
+      /* Press Enter to select */
+       robot.keyPress(KeyEvent.VK_ENTER);
+       robot.keyRelease(KeyEvent.VK_ENTER);
+	}
+	
+	// is this recurring appointment
+	// xpath for Yes or NO option  ---    //div[@class='cds--toggle__switch']
+	
+	/*  click on calendar for Date Time */
+	public static By clickOnCalendar() {
+		//return By.xpath("//button[contains(@aria-label, 'Calendar')]");		
+		//return By.xpath("//*[local-name()='button' and @id='react-aria2724544189-:r94:']");
+		
+		return By.xpath("(//button[contains(@aria-label, 'Calendar')])[2]");
+			
+				
+	}
+	/* click on day  */
+	public static By clickOnDay() {
+		return (By.xpath("(//span[@data-type='day'])[2]"));
+	}
+	/* click on Month  */
+	public static By clickOnMonth() {
+		return (By.xpath("(//span[@data-type='month'])[2]"));
+	}
+	/* click on year  */
+	public static By clickOnYear() {
+		return (By.xpath("(//span[@data-type='year'])[3]"));
+	}
+	/* enter time */
+	public static By enterTime() {
+	//	return By.xpath("//input[@class='cds--time-picker__input-field cds--text-input']");
+		return By.xpath("//input[@id='time-picker']");
+		
+		//By timeinput=By.xpath("//input[@pattern='^(1[0-2]|0?[1-9]):[0-5][0-9]$']");
+		// timeinput=(WebElement) By.xpath("//input[@id='time-picker']");		 
+		//return timeinput;
+	}
+	/*  click on AMPM*/
+	public static By clickOnAMPM() {
+		return By.xpath("//select[@id='time-picker-select-1']");
+	}
+	/* select option AMPM */
+	public static void selectOptionAMPM() throws AWTException, InterruptedException {
+		 /* Use Robot to navigate and select */
+       Robot robot = new Robot();
+
+       for (int i = 0; i < 1; i++) {
+    	    robot.keyPress(KeyEvent.VK_DOWN);
+    	    robot.keyRelease(KeyEvent.VK_DOWN);
+    	    Thread.sleep(100); // optional: slight delay for reliability
+    	}
+       
+      /* Press Enter to select */
+       robot.keyPress(KeyEvent.VK_ENTER);
+       robot.keyRelease(KeyEvent.VK_ENTER);
+	}
+	
+	/*  enter duration */
+	public static By enterDuration() {
+		//WebElement duration=driver
+		return By.xpath("//input[@type='number']");
+				//("//input[@aria-invalid='true']");
+	}
+	
+	/* click on provider */
+	public static By clickOnProvider() {
+		return By.xpath("//select[@id='provider']");
+	}
+	/* select option provider */
+	public static void selectOptionProvider() throws AWTException, InterruptedException {
+		 /* Use Robot to navigate and select */
+       Robot robot = new Robot();
+
+       for (int i = 0; i < 2; i++) {
+    	    robot.keyPress(KeyEvent.VK_DOWN);
+    	    robot.keyRelease(KeyEvent.VK_DOWN);
+    	   // Thread.sleep(100); // optional: slight delay for reliability
+    	}
+       
+      /* Press Enter to select */
+       robot.keyPress(KeyEvent.VK_ENTER);
+       robot.keyRelease(KeyEvent.VK_ENTER);
+	}
+	
+	
+	/* click on date appointment issued */
+	/*  click on calendar for Date Time */
+	public static By clickOnDateppointIssuedCalendar() {
+		//return By.xpath("//button[contains(@aria-label, 'Calendar')]");		
+		//return By.xpath("//*[local-name()='button' and @id='react-aria2724544189-:r94:']");
+		
+		return By.xpath("(//button[contains(@aria-label, 'Calendar')])[3]");		
+				
+	}
+	/* click on day  */
+	public static By clickOnDay1() {
+		return (By.xpath("//span[@data-type='day']"));
+	}
+	/* click on Month  */
+	public static By clickOnMonth1() {
+		return (By.xpath("//span[@data-type='month']"));
+	}
+	/* click on year  */
+	public static By clickOnYear1() {
+		return (By.xpath("//span[@data-type='year']"));
+	}
+	
+	public static By enterNote() {
+		return By.xpath("//textarea[@id='appointmentNote']");
+	}
+	
+	public static By clickOnSaveAndClose() {
+		return By.xpath("//button[@type='submit']");
+	}
+	
+	public static String getAndVerifyPatientIdByName(String patientName) {
+	    List<WebElement> links = driver.findElements(By.cssSelector("a[href*='/openmrs/spa/patient/']"));
+	    for (WebElement link : links) {
+	        if (link.getText().trim().equalsIgnoreCase(patientName)) {
+	            String href = link.getAttribute("href");
+	            String patientId = href.split("/patient/")[1].split("/")[0];
+	            System.out.println("Patient '" + patientName + "' found with ID: " + patientId);
+	            return patientId;
+	        }
+	    }
+
+	    // If patient not found, throw assertion error
+	    throw new AssertionError("Patient '" + patientName + "' not found in the appointment table.");
+	}
+	  
+}
+
+

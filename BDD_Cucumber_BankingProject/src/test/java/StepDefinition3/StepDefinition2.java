@@ -448,7 +448,7 @@ public void user_clicks_on_account_details_button_in_webpage() throws Interrupte
 @Given("user select customer from the dropdown")
 public void user_select_customer_from_the_dropdown() throws AWTException, InterruptedException {
 	//Thread.sleep(2000);
-	obj_AccountDetail.enterYouName();
+	obj_AccountDetail.enterYourName();
 }
 
 @Given("user clicks on the Login Button")

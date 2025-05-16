@@ -1,0 +1,17 @@
+package pageClasses;
+
+import org.openqa.selenium.By;
+
+public class RecordPatientConditionsPage {
+
+	/* click patient name  */
+	public static By clickPatName()
+	{		
+		//return By.xpath("//a[@href='/openmrs/spa/patient/b242575a-0bd2-4a50-a928-247d61b116df/chart']");		
+		//return By.xpath("(//table//tr[td/a[text()='Aayansh2 patil2']])[2]");		
+	/*	//a[contains(@class, 'appointments-table__link') and contains(@href, '/chart')] */		
+		//return By.xpath("(//a[text()='Aayansh patil'])[2]");
+		
+		return By.xpath("//a[text()='Ajay']");
+	}
+}

@@ -1,0 +1,22 @@
+package testClasses;
+
+import pageClasses.RecordPatientConditionsPage;
+import utilities.BaseClass;
+
+public class PatientEndVisitTest extends BaseClass
+{
+	
+
+	public static void excuteEndVsistPatient() throws InterruptedException
+	{
+		LoginTest.executeLoginTest();
+		Thread.sleep(10000);
+
+		scrollToTableHeader(driver);
+
+		addExplicitWait3(RecordPatientConditionsPage.clickPatName());
+		driver.findElement(RecordPatientConditionsPage.clickPatName()).click();
+		
+	}
+	
+}

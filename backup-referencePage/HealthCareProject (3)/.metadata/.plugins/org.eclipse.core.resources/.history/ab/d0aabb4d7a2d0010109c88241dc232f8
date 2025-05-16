@@ -1,0 +1,165 @@
+package pageClasses;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class RecordPatientVitalsPage {
+	
+	/* fetching the patient ID */
+	public void getPatientID() {
+	By patientLink=By.xpath("//table//tr[td/a[text()='Kavita patil']]");
+	 By patientID = By.xpath("//table//tr[td/a[text()='Kavita patil']]/td[3]");
+	System.out.println("Extracted Patient name: " + patientLink);
+	System.out.println("Extracted Patient ID: " + patientID);
+	
+	}
+
+	/* click patient name  */
+	public static By clickPatName()
+	{		
+		//return By.xpath("//a[@href='/openmrs/spa/patient/b242575a-0bd2-4a50-a928-247d61b116df/chart']");
+		
+		//return By.xpath("//table//tr[td/a[text()='Aayansh1 patil1']]");
+		
+		//return By.xpath("(//table//tr[td/a[text()='Aayansh2 patil2']])[2]");
+		
+	/*	//a[contains(@class, 'appointments-table__link') and contains(@href, '/chart')] */
+		
+		//return By.xpath("(//a[text()='Aayansh patil'])[2]");
+		return By.xpath("//a[text()='Aayansh patil']");
+	}
+	
+	public static By recordVitals()
+	{
+		return	By.xpath("(//button[@class='cds--btn cds--btn--sm cds--layout--size-sm cds--btn--ghost'])[1]");
+	}
+	
+	public static By enterTemprature()
+	{
+		 return By.xpath("//input[@name='Temperature']");
+		
+	}
+	
+	public static By enterSystolic()
+	{
+		return	By.xpath("//input[@name='systolic']");
+	}
+	
+	public static By enterDiastolic()
+	{
+		return	By.xpath("//input[@name='diastolic']");
+	}
+	
+	public static By enterHeartRate()
+	{
+		return	By.xpath("//input[@name='Pulse']");
+	}
+	public static By enterRespirationRate()
+	{
+		return	By.xpath("//input[@name='Respiration rate']");
+	}
+	public static By enterOxygenSaturation()
+	{
+		return	By.xpath("//input[@name='Oxygen saturation']");
+	}
+	public static By enterNotes()
+	{
+		return	By.xpath("//textarea[@name='Notes']");
+	}
+	public static By enterWeight()
+	{
+		return	By.xpath("//input[@name='Weight']");
+	}
+	public static By enterHeight()
+	{
+		return	By.xpath("//input[@name='Height']");
+	}
+	public static By enterMUAC()
+	{
+		return	By.xpath("//input[@name='MUAC']");
+	}
+	public static By submitDetails()
+	{
+		return	By.xpath("//button[@type='submit']");
+	}
+	
+	public static By vitalTable ()
+	{
+		return	By.xpath("//table[@aria-label='vitals']//tbody//tr/td");
+	}
+	private static By vitalTable=By.xpath("//table[@aria-label='vitals']//tbody//tr/td");
+
+	// Method to get the last row of the table
+    public static WebElement getLastRow(WebDriver driver) {
+    	new org.openqa.selenium.support.ui.WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(vitalTable));
+        WebElement table = driver.findElement(vitalTable);
+        WebElement tbody = table.findElement(By.tagName("tbody"));
+        List<WebElement> rows = tbody.findElements(By.tagName("tr"));
+        System.out.println("date time : "+rows);
+        if (rows.isEmpty()) {
+            throw new NoSuchElementException("No data rows found in the table body.");
+        }
+
+        return rows.get(rows.size() - 1);
+    }
+
+    // Method to get the date-time from the last row (assumes date-time is in column 0)
+    public static String getDateTimeFromLastRow(WebDriver driver) {
+        WebElement lastRow = getLastRow(driver);
+        List<WebElement> cells = lastRow.findElements(By.tagName("td"));
+        System.out.println("date time : "+cells.get(0).getText());
+        return cells.get(0).getText(); // Assuming date-time is in first column
+    }
+    
+ // Method to get the last row of the table
+    public static Map<String, String> getVitalsFromLastRow(WebDriver driver) {
+        // Ensure Table View is selected
+        WebElement tableViewBtn = driver.findElement(By.cssSelector("button[aria-label='Table view']"));
+        if (!tableViewBtn.getAttribute("aria-selected").equals("true")) {
+            tableViewBtn.click();
+        }
+
+        // Wait for table to load
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement table = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table[@aria-label='vitals']")));
+
+        // Get the last row
+        List<WebElement> rows = table.findElements(By.xpath(".//tr"));
+        if (rows.isEmpty()) {
+            throw new NoSuchElementException("No rows found in vitals table.");
+        }
+
+        WebElement lastRow = rows.get(rows.size() - 1);
+        List<WebElement> cells = lastRow.findElements(By.tagName("td"));
+
+        if (cells.size() < 6) {
+            throw new IllegalStateException("Expected at least 6 columns (DateTime, Temp, BP), but found: " + cells.size());
+        }
+
+        // Extract values
+        String dateTime = cells.get(0).getText().trim();
+        String temperature = cells.get(1).getText().trim();
+        String bp = cells.get(2).getText().trim();
+
+        // Return as a map
+        Map<String, String> vitals = new HashMap<>();
+        vitals.put("DateTime", dateTime);
+        vitals.put("Temperature", temperature);
+        vitals.put("BP", bp);
+        vitals.put("Pulse", cells.get(3).getText().trim());
+        vitals.put("RespirationRate", cells.get(4).getText().trim());
+        vitals.put("SpO2", cells.get(5).getText().trim());
+
+
+        return vitals;
+    }
+
+}

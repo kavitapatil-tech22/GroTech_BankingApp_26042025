@@ -1,0 +1,139 @@
+package testClasses;
+import java.awt.AWTException;
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import pageClasses.RecordPatientConditionsPage;
+import utilities.BaseClass;
+import utilities.ListenerImplementation;
+@Listeners(ListenerImplementation.class)
+public class RecordPatientConditionsTest extends BaseClass{
+	
+	@Test(priority = 3, groups = {"sanity"},retryAnalyzer = utilities.RetryAnalyzer.class)
+	public static void recordPatientCondition() throws InterruptedException, AWTException
+	{
+		LoginTest.executeLoginTest();
+		Thread.sleep(10000);
+
+		scrollToTableHeader(driver);
+
+		addExplicitWait3(RecordPatientConditionsPage.clickPatName());
+		driver.findElement(RecordPatientConditionsPage.clickPatName()).click();
+		
+		/* click on Conditions link - elementToBeClickable */
+		//addExplicitWait_elementclickable(RecordPatientConditionsPage.clickOnConditions());
+		//driver.findElement(RecordPatientConditionsPage.clickOnConditions()).click();
+
+		/*  click on record conditions link , elementToBeClickable */
+		addExplicitWait_elementclickable(RecordPatientConditionsPage.clickOnRecordConditionLink());
+		driver.findElement(RecordPatientConditionsPage.clickOnRecordConditionLink()).click();
+		
+		
+		/* click on Searchbox */
+//		addExplicitWait(RecordPatientConditionsPage.clickONSearchCondition());
+//		WebElement searchbox_Condition = driver.findElement(RecordPatientConditionsPage.clickONSearchCondition());
+//		searchbox_Condition.sendKeys("Typhoid fever");
+//		searchbox_Condition.sendKeys(Keys.RETURN);
+		//Thread.sleep(2000);
+		
+		String conditionName="Depression";
+		addExplicitWait(RecordPatientConditionsPage.clickONSearchCondition());
+	/*	WebElement searchbox_Condition = driver.findElement(RecordPatientConditionsPage.clickONSearchCondition());		
+		searchbox_Condition.sendKeys(conditionName); 
+		searchbox_Condition.sendKeys(Keys.RETURN);
+		searchbox_Condition.click(); */
+		/* Pause to allow dropdown to open */
+	    //Thread.sleep(1000);
+		//RecordPatientConditionsPage.slectOptionConditionName();
+		
+		
+		WebElement input = driver.findElement(RecordPatientConditionsPage.clickONSearchCondition());
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", input);
+		input.sendKeys(conditionName);
+		input.sendKeys(Keys.RETURN);
+		
+		
+		//String CondtionVal=searchbox_Condition.getText();
+		
+		 /* click on clickon caledar */		
+		
+		addExplicitWait_presenceOfElementLocated(RecordPatientConditionsPage.clickOnCalendar()); 
+		driver.findElement(RecordPatientConditionsPage.clickOnCalendar()).click();
+		
+		Thread.sleep(1000);
+		addExplicitWait(RecordPatientConditionsPage.clickOnDay());	
+		By day=RecordPatientConditionsPage.clickOnDay();
+		driver.findElement(RecordPatientConditionsPage.clickOnDay()).sendKeys("13");
+		Thread.sleep(1000);
+		
+		addExplicitWait(RecordPatientConditionsPage.clickOnMonth());
+		By month=RecordPatientConditionsPage.clickOnMonth();
+		driver.findElement(RecordPatientConditionsPage.clickOnMonth()).sendKeys("05"); // for May
+		
+		Thread.sleep(1000);
+		addExplicitWait(RecordPatientConditionsPage.clickOnYear());
+		By Year=RecordPatientConditionsPage.clickOnYear();
+		driver.findElement(RecordPatientConditionsPage.clickOnYear()).sendKeys("2025");
+		
+          /*select Clicnical Status*/
+		addExplicitWait(RecordPatientConditionsPage.selectClinicalStatus());
+		By ClinicalStatus=RecordPatientConditionsPage.selectClinicalStatus();
+		//Thread.sleep(1000);
+		driver.findElement(RecordPatientConditionsPage.selectClinicalStatus()).click();
+		
+		//scrollDown();
+		scrollToBottom(driver);
+		
+//		int initialRowCount = RecordPatientConditionsPage.getConditionRowCount(driver);
+//	    System.out.println("initialRowCount : " +initialRowCount);
+		
+//		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(60));
+//		WebElement saveButton = wait1.until(ExpectedConditions.elementToBeClickable(RecordPatientConditionsPage.clickOnSaveAndClose()));
+//		saveButton.click();
+		
+		WebElement saveBtn = driver.findElement(By.xpath("//button[normalize-space()='Save & close']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", saveBtn);
+		//saveBtn.click();
+		
+//		String expectedConditionName=conditionName;
+//		String expectedOnset="13 — May — 2025";
+//		String expectedStatus="Active";
+		
+		RecordPatientConditionsPage.verifyConditionAdded(driver,conditionName);
+		
+		//Thread.sleep(4000);
+
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+//		// Optional: adjust filter to show "All"
+//        try {
+//            WebElement filterDropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("conditionStatusFilter")));
+//            filterDropdown.click();
+//            WebElement allOption = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(., 'All')]")));
+//            allOption.click();
+//        } catch (Exception e) {
+//            System.out.println("Filter dropdown not adjusted (maybe already set correctly).");
+//        }
+//
+//        // Step 6: Wait until the new condition appears in the table
+//        By newRowLocator = By.xpath("//tbody/tr[td[contains(text(),'" + conditionName + "')]]");
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(newRowLocator));
+//
+//        System.out.println("Condition '" + conditionName + "' successfully added and visible in the table.");
+		
+	}
+	
+}

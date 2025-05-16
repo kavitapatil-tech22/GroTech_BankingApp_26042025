@@ -1,0 +1,27 @@
+package testClasses;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import utilities.BaseClass;
+
+public class AppointmentValidtaion extends BaseClass
+{
+	
+	public static void validationAppointments() 
+	{
+		driver.get("https://dev3.openmrs.org/openmrs/spa/home/appointments");
+
+        // Wait until the table loads (you can use WebDriverWait if needed)
+        List<WebElement> rows = driver.findElements(By.xpath("//table[@id='appointmentTable']/tbody/tr"));
+
+        boolean found = false;
+        String expectedName = "Kavita Patil";
+        String expectedDate = "2025-05-08";
+        
+	}
+	
+
+}

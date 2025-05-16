@@ -1,0 +1,8 @@
+package testClasses;
+
+import utilities.BaseClass;
+
+public class EndVisitTest extends BaseClass
+{
+
+}

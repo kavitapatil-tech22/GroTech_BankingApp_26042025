@@ -1,0 +1,4 @@
+browser=chrome
+#browser=firefox
+#browser=edge
+URL=https://o3.openmrs.org/openmrs/spa/home?lang=en

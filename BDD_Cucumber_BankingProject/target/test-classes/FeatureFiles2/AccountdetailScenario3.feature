@@ -20,6 +20,4 @@ Feature: Validate AccountDetails functionality of GrotechMinds Banking Applicati
 
     Examples: 
       | DepositAmount | WithdrawAmount |
-      |           5000 |               1000 |
-
-   
+      |          5000 |           1000 |

@@ -1,0 +1,20 @@
+package constantData;
+
+public class ConstantData {
+	public final static String PropertyFilePath="src/main/java/Global.properties";
+	//public final static String ScreenshotPathPass="D:\\06May2025_ScreenShots\\"+"Kavita0"+Math.random()+"Testnew.jpeg";
+	//public final static String ScreenshotPathFail="D:\\06May2025_ScreenShots\\"+"Kavita0"+Math.random()+"Testnew.jpeg";
+	
+	
+	public final static String UserNameFilePath="src/main/java/Global.properties";
+	public final static String PasswordFilePath="src/main/java/Global.properties";
+	public final static String PatientNameFilePath="src/main/java/Global.properties";
+	
+	
+	public final static String ScreenshotPathPass="C:\\Users\\saanv\\eclipse-workspace1\\HealthCareProject (3)\\HealthCareProject\\Screenshots\\pass\\"+"Kavita0"+Math.random()+"Testnew.jpeg";
+
+	public final static String ScreenshotPathFail="C:\\Users\\saanv\\eclipse-workspace1\\HealthCareProject (3)\\HealthCareProject\\Screenshots\\fail\\"+"Kavita0"+Math.random()+"Testnew.jpeg";
+
+
+
+}

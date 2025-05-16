@@ -1,0 +1,77 @@
+package pageClasses;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class PatientEndVisitPage {
+	
+	/* click patient name  */
+	public static By clickPatName()
+	{		
+		
+		//return By.xpath("//a[text()='Dorothy Odinga']");
+		//return By.xpath("//a[text()='Richard Jones']");
+		return By.xpath("//a[text()='Donald Harris']");
+	}
+
+	/*  click on location */
+	public static By clickOnActions()
+	{		
+		
+		//return By.xpath("//div[@class='cds--overflow-menu MRCrdpdlhDbDw6ITxMXAfw==']");
+		//return By.xpath("//button[@id='custom-actions-overflow-menu-trigger' and @aria-expanded='false']");
+		
+		 return By.id("custom-actions-overflow-menu-trigger");
+	}
+
+	
+	/* select option location */
+	public static void selectOptionActions() throws AWTException {
+		 /* Use Robot to navigate and select */
+       Robot robot = new Robot();
+
+       /* Press Down Arrow 1 times to reach desired option */
+       robot.keyPress(KeyEvent.VK_DOWN);
+       robot.keyRelease(KeyEvent.VK_DOWN);
+       robot.keyPress(KeyEvent.VK_DOWN);
+       robot.keyRelease(KeyEvent.VK_DOWN);
+       robot.keyPress(KeyEvent.VK_DOWN);
+       robot.keyRelease(KeyEvent.VK_DOWN);
+       
+      /* Press Enter to select */
+       robot.keyPress(KeyEvent.VK_ENTER);
+       robot.keyRelease(KeyEvent.VK_ENTER);
+	}
+	
+	public static By clickOnModelPopEndVisitButton()
+	{		
+		
+		
+		 return By.xpath("//button[contains(@class, 'cds--btn cds--btn--danger') and text()='End Visit']");
+	}
+
+	/* below code is working fine and accessed in */
+	/*  the after end visit appointment for patient , to validate the the  patient ID should not present from the table,it should be null  */
+	public static String getAndVerifyPatientIdByName(String patientName,WebDriver driver) {
+		String patientId = null;
+		List<WebElement> links = driver.findElements(By.cssSelector("a[href*='/openmrs/spa/patient/']"));
+	    for (WebElement link : links) {
+	        if (link.getText().trim().equalsIgnoreCase(patientName)) {
+	            String href = link.getAttribute("href");
+	             patientId = href.split("/patient/")[1].split("/")[0];
+	            System.out.println("Patient '" + patientName + "' found with ID: " + patientId);
+	            return patientId;
+	        }
+	    }
+
+	    // If patient is not null found , throw assertion error
+	   // throw new AssertionError("Patient '" + patientId + "' Patient is not null,found in the appointment table.");
+	}
+	
+}

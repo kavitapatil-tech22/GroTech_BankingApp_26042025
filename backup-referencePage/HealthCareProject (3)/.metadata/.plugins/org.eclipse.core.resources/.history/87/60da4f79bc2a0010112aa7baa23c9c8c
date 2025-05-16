@@ -1,0 +1,28 @@
+package pageClasses;
+
+import org.openqa.selenium.By;
+
+public class AppointmentPage {
+	
+	/* click on Appointment link */
+	public static By ClickOnLinkAppointment() {
+		
+		return By.xpath("//a[@href='/openmrs/spa/home/appointments']");
+		
+	}
+	/* click on Create new Appointment button */
+	public static By ClickOnCreateNewAppointment() {
+		
+		return By.xpath("//button[text()='Create new appointment']");
+		
+	}
+	/* find the search box */
+	public static By ClickOnSearchBox() {
+		return By.xpath("//input[@data-testid='patientSearchBar']");
+	}
+	/* Click on Start Visit button */
+	public static By ClickOnStartVisitButton() {
+		return By.xpath("(//div[@data-extension-id='start-visit-button-patient-search'])[1]");
+	}
+
+}

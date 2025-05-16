@@ -1,0 +1,145 @@
+package testClasses;
+import java.awt.AWTException;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import pageClasses.CreateNewAppointmentPage;
+import utilities.BaseClass;
+
+public class CreateNewAppointmnetTest extends BaseClass
+{
+	@Test(priority=2,groups={"sanity"},retryAnalyzer = utilities.RetryAnalyzer.class)
+	
+	public void CreateAppointmnet() throws InterruptedException, AWTException
+	{
+		LoginTest.executeLoginTest();
+		Thread.sleep(10000);
+		/* click on Appointment link */
+		addExplicitWait(CreateNewAppointmentPage.ClickOnLinkAppointment());
+		driver.findElement(CreateNewAppointmentPage.ClickOnLinkAppointment()).click();
+		
+		/* click on Create new Appointment button */
+		addExplicitWait(CreateNewAppointmentPage.ClickOnCreateNewAppointment());
+		driver.findElement(CreateNewAppointmentPage.ClickOnCreateNewAppointment()).click();
+		
+		
+		/* click on Searchbox */
+		addExplicitWait(CreateNewAppointmentPage.ClickOnSearchBox());
+		WebElement search_box = driver.findElement(CreateNewAppointmentPage.ClickOnSearchBox());
+		search_box.sendKeys("Santosh Patil");
+		search_box.sendKeys(Keys.RETURN);
+		Thread.sleep(5);
+		Thread.sleep(4000);
+		
+		/* click on Active visit link */
+		addExplicitWait(CreateNewAppointmentPage.ClickOnLinkActiveVisit());
+		driver.findElement(CreateNewAppointmentPage.ClickOnLinkActiveVisit()).click();
+		Thread.sleep(5000);
+		
+		/* click on location dropdown */		
+		addExplicitWait(CreateNewAppointmentPage.clickOnLocation()); 	  		
+		driver.findElement(CreateNewAppointmentPage.clickOnLocation()).click();
+		
+		/* Pause to allow dropdown to open */
+	    //Thread.sleep(1000);
+	    CreateNewAppointmentPage.slectOptionLocation();
+
+	       
+	    /* click on location dropdown */		
+		addExplicitWait(CreateNewAppointmentPage.clickOnService()); 	  		
+		driver.findElement(CreateNewAppointmentPage.clickOnService()).click();
+			
+	    /* Pause to allow dropdown to open */
+		//Thread.sleep(1000);
+		CreateNewAppointmentPage.slectOptionService();
+		
+		
+		 /* click on AppointmentType dropdown */		
+		addExplicitWait(CreateNewAppointmentPage.clickOnAppointmentType()); 	  		
+		driver.findElement(CreateNewAppointmentPage.clickOnAppointmentType()).click();
+			
+	    /* Pause to allow dropdown to open */
+		Thread.sleep(1000);
+		CreateNewAppointmentPage.slectOptionAppointmentType();
+
+		scrollDownDivTag();
+		
+		//Thread.sleep(1000);
+		 /* click on clickon caledar */		
+		//addExplicitWait(CreateNewAppointmentPage.clickOnCalendar()); 	
+		addExplicitWait_presenceOfElementLocated(CreateNewAppointmentPage.clickOnCalendar()); 
+		driver.findElement(CreateNewAppointmentPage.clickOnCalendar()).click();
+		
+		Thread.sleep(1000);
+		addExplicitWait(CreateNewAppointmentPage.clickOnDay());
+		driver.findElement(CreateNewAppointmentPage.clickOnDay()).sendKeys("10");
+		Thread.sleep(1000);
+		addExplicitWait(CreateNewAppointmentPage.clickOnMonth());
+		driver.findElement(CreateNewAppointmentPage.clickOnMonth()).sendKeys("05"); // for May
+		
+		Thread.sleep(1000);
+		addExplicitWait(CreateNewAppointmentPage.clickOnYear());
+		driver.findElement(CreateNewAppointmentPage.clickOnYear()).sendKeys("2025");
+			
+		
+		addExplicitWait3(CreateNewAppointmentPage.enterTime());
+		driver.findElement(CreateNewAppointmentPage.enterTime()).clear();
+		driver.findElement(CreateNewAppointmentPage.enterTime()).sendKeys("05:00");
+		
+//		WebElement timeinput= driver.findElement(By.xpath("//input[@id='time-picker']"));
+//		timeinput.clear();
+//		timeinput.sendKeys("09:40");
+
+		/* click on AMPM dropdown */		
+		addExplicitWait(CreateNewAppointmentPage.clickOnAMPM()); 	  		
+		driver.findElement(CreateNewAppointmentPage.clickOnAMPM()).click();
+			
+	    /* Pause to allow dropdown to open */
+		Thread.sleep(1000);
+		CreateNewAppointmentPage.selectOptionAMPM();
+		
+		addExplicitWait(CreateNewAppointmentPage.enterDuration()); 	
+		driver.findElement(CreateNewAppointmentPage.enterDuration()).sendKeys("60");
+		Thread.sleep(1000);
+		
+		/*select Provider*/
+		
+		addExplicitWait(CreateNewAppointmentPage.clickOnProvider()); 	  		
+		driver.findElement(CreateNewAppointmentPage.clickOnProvider()).click();
+		 /* Pause to allow dropdown to open */
+		Thread.sleep(1000);
+		CreateNewAppointmentPage.selectOptionProvider();
+		Thread.sleep(1000);
+		scrollDownDivTag();
+		
+		Thread.sleep(1000);
+		addExplicitWait(CreateNewAppointmentPage.enterNote());
+		driver.findElement(CreateNewAppointmentPage.enterNote()).sendKeys("Appointment for Santosh Patil ");
+		Thread.sleep(1000);		
+		
+		scrollToBottom(driver);
+		
+		addExplicitWait(CreateNewAppointmentPage.clickOnSaveAndClose());	
+		driver.findElement(CreateNewAppointmentPage.clickOnSaveAndClose()).click();
+		
+		Thread.sleep(3000); 		 		
+        addExplicitWait(CreateNewAppointmentPage.clickOnHome());
+        driver.findElement(CreateNewAppointmentPage.clickOnHome()).click();
+        scrollToBottom(driver);
+        scrollDown();
+        Thread.sleep(3000); 
+		
+        String patientName = "Santosh Patil"; // Replace with actual dynamic name
+
+        // Will throw AssertionError if not found
+        String patientId1 = CreateNewAppointmentPage.getAndVerifyPatientIdByName(patientName);
+
+        // Optional: further validations
+        Assert.assertNotNull(patientId1, "Patient ID should not be null.");
+        System.out.println("Test Passed: Patient appointment is correctly displayed." + patientId1);
+                  
+		//Thread.sleep(1000);
+	}
+
+}

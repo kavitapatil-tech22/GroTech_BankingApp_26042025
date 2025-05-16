@@ -1,0 +1,14 @@
+package pageClasses;
+
+import org.openqa.selenium.By;
+
+public class AppointmentPage {
+	
+	/* click on Appointment link */
+	public static By ClickOnAppointment() {
+		
+		return By.xpath("//a[@href='/openmrs/spa/home/appointments']");
+		
+	}
+
+}

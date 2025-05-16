@@ -1,0 +1,84 @@
+package pageClasses;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
+import org.openqa.selenium.By;
+
+public class AppointmentPage {
+	
+	/* click on Appointment link */
+	public static By ClickOnLinkAppointment() {
+		
+		return By.xpath("//a[@href='/openmrs/spa/home/appointments']");
+		
+	}
+	/* click on Create new Appointment button */
+	public static By ClickOnCreateNewAppointment() {
+		
+		return By.xpath("//button[text()='Create new appointment']");
+		
+	}
+	/* find the search box */
+	public static By ClickOnSearchBox() {
+		return By.xpath("//input[@data-testid='patientSearchBar']");
+	}
+	/* Click on Start Visit button */
+	public static By ClickOnStartVisitButton() {
+		return By.xpath("(//div[@data-extension-id='start-visit-button-patient-search'])[1]");
+	}
+	/* click on New */
+	
+	public static By ClickOnNew() {
+		return By.xpath("(//button[@type='button' and @aria-selected='true'])[2]");
+	}
+	
+	/* click on visit location */
+	/*public static By ClickOnVisitLocation() {
+		return By.xpath("//input[@id='location']");
+	}*/
+	
+	/* click on visit Type */
+	public static By SelectVisitType() {
+		
+		return By.xpath("(//span[@class='cds--radio-button__appearance'])[2]");
+	}
+	
+	/* select punctuality */
+	public static By selectPunctuality() {
+		
+		
+		//return By.xpath("//select[@id='select-:r4u:']");
+		return By.xpath("//select[@name='visitAttributes.57ea0cbb-064f-4d09-8cf4-e8228700491c']");
+		
+		//svg element		
+		//return By.xpath("(//*[local-name()='svg' and contains(@class, 'cds--select__arrow')])[3]");
+	}
+	
+	public static void slectOptionPunctuality() throws AWTException {
+		 /* Use Robot to navigate and select */
+        Robot robot = new Robot();
+
+        /* Press Down Arrow 1 times to reach desired option */
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.keyRelease(KeyEvent.VK_DOWN);
+       /* Press Enter to select */
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+	}
+	
+	/*  enter the policy number */	
+	public static By enterPolicyNum() {
+		return By.xpath("//input[@id='aac48226-d143-4274-80e0-264db4e368ee']");
+	}
+	
+	/*  click on start visit button */
+	
+    public static By clickOnStartVisitButton() {
+    	return By.xpath("//span[text()='Start visit']");
+    }
+	
+	
+
+}

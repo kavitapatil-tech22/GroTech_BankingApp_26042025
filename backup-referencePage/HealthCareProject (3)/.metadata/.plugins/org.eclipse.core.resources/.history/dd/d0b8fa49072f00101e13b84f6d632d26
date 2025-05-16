@@ -1,0 +1,22 @@
+package pageClasses;
+
+import org.openqa.selenium.By;
+
+public class PatientEndVisitPage {
+	
+	/* click patient name  */
+	public static By clickPatName()
+	{		
+		
+		return By.xpath("//a[text()='Santosh Patil']");
+	}
+
+	
+	public static By clickOnActions()
+	{		
+		
+		return By.xpath("//div[@class='cds--overflow-menu MRCrdpdlhDbDw6ITxMXAfw==']");
+	}
+
+	
+}

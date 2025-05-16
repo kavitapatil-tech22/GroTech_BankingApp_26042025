@@ -1,0 +1,35 @@
+package testClasses;
+import java.awt.AWTException;
+
+import org.testng.annotations.Test;
+
+import pageClasses.PatientEndVisitPage;
+import utilities.BaseClass;
+
+public class PatientEndVisitTest extends BaseClass
+{
+	@Test(priority=2,groups={"sanity"},retryAnalyzer = utilities.RetryAnalyzer.class)
+	public static void excuteEndVsistPatient() throws InterruptedException, AWTException
+	{
+	
+		LoginTest.executeLoginTest();
+		Thread.sleep(10000);
+
+		scrollToTableHeader(driver);
+
+		addExplicitWait3(PatientEndVisitPage.clickPatName());
+		driver.findElement(PatientEndVisitPage.clickPatName()).click();
+		
+		scrollToTop(driver);
+		Thread.sleep(3000));
+		/*  elementToBeClickable */
+		addExplicitWait_elementclickable(PatientEndVisitPage.clickOnActions());
+		driver.findElement(PatientEndVisitPage.clickOnActions()).click();
+		
+		/* Pause to allow dropdown to open */
+	    //Thread.sleep(1000);
+		PatientEndVisitPage.selectOptionActions();
+		
+	}
+	
+}
