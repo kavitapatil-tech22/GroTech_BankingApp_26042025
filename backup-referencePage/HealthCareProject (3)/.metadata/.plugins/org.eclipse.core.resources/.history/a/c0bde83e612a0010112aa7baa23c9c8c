@@ -1,7 +1,0 @@
-package constantData;
-
-public class ConstantData {
-	public final static String PropertyFilePath="src/main/java/Global.properties";
-	public final static String ScreenshotPathPass="D:\\06May2025_ScreenShots\\"+"Kavita0"+Math.random()+"Testnew.jpeg";
-	public final static String ScreenshotPathFail="D:\\06May2025_ScreenShots\\"+"Kavita0"+Math.random()+"Testnew.jpeg";
-}
